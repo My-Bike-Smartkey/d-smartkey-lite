@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "evidence": "Synthetic conformance fixtures; not captures from a real vehicle.",
+  "auth": [
+    {
+      "challenge_hex": "00000000",
+      "counter": 0,
+      "pin": "DEMO-PIN-0001",
+      "hash_input_utf8": "0DEMO-PIN-0001",
+      "response_ascii": "f119a58d410cabc8d51da374978b5f7b13dceac3f2955d2fe17a8ae0e759f9e6",
+      "confirmed_counter": 1,
+      "rejected_counter": 3
+    },
+    {
+      "challenge_hex": "64000000",
+      "counter": 100,
+      "pin": "DEMO-PIN-0001",
+      "hash_input_utf8": "50DEMO-PIN-0001",
+      "response_ascii": "dbdb7f5671e23f39f363cd9ffdc21ccc1194ee261dd62be3e9cea1db6267d801",
+      "confirmed_counter": 101,
+      "rejected_counter": 103
+    },
+    {
+      "challenge_hex": "78563412",
+      "counter": 305419896,
+      "pin": "TESTPIN12345",
+      "hash_input_utf8": "152709948TESTPIN12345",
+      "response_ascii": "cef0ffbc1a36c87dd6f7c6cf5b8f4dc6a63535d1363c23441ee8853f2f08c8be",
+      "confirmed_counter": 305419897,
+      "rejected_counter": 305419899
+    },
+    {
+      "challenge_hex": "feffffff",
+      "counter": 4294967294,
+      "pin": "DEMO-PIN-0001",
+      "hash_input_utf8": "2147483647DEMO-PIN-0001",
+      "response_ascii": "5c8d706d70e01ef46a978556744befd0ee22ad1d6ec4f2f15e86e835592b6e2d",
+      "confirmed_counter": 4294967295,
+      "rejected_counter": 1
+    }
+  ],
+  "lock_states": [
+    {
+      "hex": "",
+      "state": "locked"
+    },
+    {
+      "hex": "00",
+      "state": "locked"
+    },
+    {
+      "hex": "0000",
+      "state": "locked"
+    },
+    {
+      "hex": "30",
+      "state": "locked"
+    },
+    {
+      "hex": "3000",
+      "state": "locked"
+    },
+    {
+      "hex": "02",
+      "state": "unlocked"
+    },
+    {
+      "hex": "0200",
+      "state": "unlocked"
+    },
+    {
+      "hex": "31",
+      "state": "unlocked"
+    },
+    {
+      "hex": "3100",
+      "state": "unlocked"
+    },
+    {
+      "hex": "07",
+      "state": "armed"
+    },
+    {
+      "hex": "0700",
+      "state": "armed"
+    },
+    {
+      "hex": "ff",
+      "state": "unknown"
+    },
+    {
+      "hex": "0100",
+      "state": "unknown"
+    }
+  ],
+  "commands": [
+    {
+      "command": "power_on",
+      "characteristic_prefix": "7F13FE5C",
+      "hex": "31",
+      "expected_state": "unlocked"
+    },
+    {
+      "command": "power_off",
+      "characteristic_prefix": "7F13FE5C",
+      "hex": "30",
+      "expected_state": "locked"
+    },
+    {
+      "command": "arm",
+      "characteristic_prefix": "EEC8FD7F",
+      "hex": "31",
+      "expected_state": "armed"
+    },
+    {
+      "command": "find_start",
+      "characteristic_prefix": "350D9A82",
+      "hex": "31",
+      "expected_state": null
+    },
+    {
+      "command": "find_stop",
+      "characteristic_prefix": "350D9A82",
+      "hex": "30",
+      "expected_state": null
+    }
+  ],
+  "dashboard": [
+    {
+      "format": "float32_le_40",
+      "hex": "00e640460000484100000000000000000000000000000c4200000042000000000000000000000000",
+      "odometer_km": 12345.5,
+      "speed_kmh": 12.5,
+      "motor_temp_c": 35,
+      "controller_temp_c": 32
+    },
+    {
+      "format": "legacy_13",
+      "hex": "00000000002300a85ebc000020",
+      "odometer_km": 12345,
+      "speed_kmh": 0,
+      "motor_temp_c": 35,
+      "controller_temp_c": 32
+    }
+  ],
+  "time_sync": [
+    {
+      "local_time_utc_plus_7": "00:00:00",
+      "ascii": "0",
+      "hex": "30"
+    },
+    {
+      "local_time_utc_plus_7": "12:34:56",
+      "ascii": "45296",
+      "hex": "3435323936"
+    },
+    {
+      "local_time_utc_plus_7": "23:59:59",
+      "ascii": "86399",
+      "hex": "3836333939"
+    }
+  ]
+}

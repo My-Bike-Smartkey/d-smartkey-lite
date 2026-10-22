@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none">
+  <!-- Simple background -->
+  <defs>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Clean white background with rounded corners for app icon -->
+  <rect width="1024" height="1024" rx="200" ry="200" fill="url(#backgroundGradient)"/>
+  
+  <!-- V-Hexa logo centered and scaled for app icon -->
+  <g transform="translate(512,512) scale(15)">
+    <!-- Main hexagon - matching original SVG exactly -->
+    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" 
+          stroke="#f97316" 
+          stroke-width="1.5" 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+          fill="none"/>
+    
+    <!-- V chevron - matching original SVG exactly -->
+    <path d="M8 10l4 4 4-4" 
+          stroke="#f97316" 
+          stroke-width="1.5" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+    
+    <!-- Key shaft - matching original SVG exactly -->
+    <path d="M12 14v5" 
+          stroke="#f97316" 
+          stroke-width="1.5" 
+          stroke-linecap="round"/>
+    
+    <!-- Key top - matching original SVG exactly -->
+    <path d="M12 5v2" 
+          stroke="#f97316" 
+          stroke-width="1.5" 
+          stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,91 @@
+name: DBikeSmartkey
+options:
+  bundleIdPrefix: com.smartkey
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+  defaultConfig: Debug
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "5.3.0"
+    CURRENT_PROJECT_VERSION: "1019"  # dải 1xxx riêng cho biến thể Lite
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+  configs:
+    # release/noask: iOS 16 foreground-only, không AccessorySetupKit.
+    Debug:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: "DEBUG NOASK"
+    Release:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: "NOASK"
+
+targets:
+  DBikeSmartkey:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: DBikeSmartkey
+        excludes:
+          - "**/*.entitlements"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.mybike.smartkey.lite
+        INFOPLIST_FILE: DBikeSmartkey/Info.plist
+        # QUAN TRỌNG: giữ nguyên tên product cũ — module Swift là D_SmartKey
+        # (test dùng @testable import D_SmartKey).
+        PRODUCT_NAME: "D-SmartKey"
+        CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_EMIT_LOC_STRINGS: "YES"
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+        ENABLE_PREVIEWS: "YES"
+        GENERATE_INFOPLIST_FILE: false
+        SUPPORTED_PLATFORMS: "iphoneos iphonesimulator"
+        SUPPORTS_MACCATALYST: false
+        CODE_SIGN_ENTITLEMENTS: DBikeSmartkey/DBikeSmartkeyLite.entitlements
+      configs:
+        Debug:
+          ENABLE_TESTABILITY: "YES"
+        Release:
+          DEPLOYMENT_POSTPROCESSING: "YES"
+          STRIP_INSTALLED_PRODUCT: "YES"
+          STRIP_SWIFT_SYMBOLS: "YES"
+          SWIFT_COMPILATION_MODE: "wholemodule"
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
+          GCC_SYMBOLS_PRIVATE_EXTERN: "YES"
+
+  DBikeSmartkeyTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: DBikeSmartkeyTests
+        excludes:
+          - "Fixtures/**"
+      - path: DBikeSmartkeyTests/Fixtures/protocol-vectors.json
+        buildPhase: resources
+    dependencies:
+      - target: DBikeSmartkey
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.mybike.smartkey.lite.tests
+        GENERATE_INFOPLIST_FILE: "YES"
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: "1"
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/D-SmartKey.app/D-SmartKey"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+
+schemes:
+  DBikeSmartkey:
+    build:
+      targets:
+        DBikeSmartkey: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - DBikeSmartkeyTests
